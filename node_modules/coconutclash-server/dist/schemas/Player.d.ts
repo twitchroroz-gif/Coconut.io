@@ -12,6 +12,8 @@ export declare class Player extends Schema {
     kills: number;
     inputX: number;
     inputY: number;
+    isBot: boolean;
+    inBush: boolean;
     lastProcessedSeq: number;
 }
 //# sourceMappingURL=Player.d.ts.map

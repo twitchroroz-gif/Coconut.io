@@ -1,10 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.WEAPONS = void 0;
-const types_1 = require("./types");
-exports.WEAPONS = {
-    [types_1.WeaponType.NONE]: {
-        type: types_1.WeaponType.NONE,
+import { WeaponType } from './types';
+export const WEAPONS = {
+    [WeaponType.NONE]: {
+        type: WeaponType.NONE,
         name: 'Unarmed',
         isMelee: true,
         damage: 5,
@@ -12,8 +9,8 @@ exports.WEAPONS = {
         range: 40,
         speed: 0,
     },
-    [types_1.WeaponType.SLINGSHOT]: {
-        type: types_1.WeaponType.SLINGSHOT,
+    [WeaponType.SLINGSHOT]: {
+        type: WeaponType.SLINGSHOT,
         name: 'Fronde',
         isMelee: false,
         damage: 15,
@@ -21,8 +18,8 @@ exports.WEAPONS = {
         range: 400,
         speed: 600, // projectile speed
     },
-    [types_1.WeaponType.BLOWGUN]: {
-        type: types_1.WeaponType.BLOWGUN,
+    [WeaponType.BLOWGUN]: {
+        type: WeaponType.BLOWGUN,
         name: 'Sarbacane',
         isMelee: false,
         damage: 25,
@@ -30,8 +27,8 @@ exports.WEAPONS = {
         range: 600,
         speed: 1000, // fast projectile
     },
-    [types_1.WeaponType.MACHETE]: {
-        type: types_1.WeaponType.MACHETE,
+    [WeaponType.MACHETE]: {
+        type: WeaponType.MACHETE,
         name: 'Machette',
         isMelee: true,
         damage: 35,

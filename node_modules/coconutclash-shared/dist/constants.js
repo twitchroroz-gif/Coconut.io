@@ -1,60 +1,62 @@
-"use strict";
 // ============================================================
 // CoconutClash — Shared Constants
 // All game balance values, map dimensions, and timing in one place.
 // ============================================================
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.CSS_COLORS = exports.COLORS = exports.COCONUT_USE_TIME_MS = exports.COCONUT_HEAL_AMOUNT = exports.SHIELD_MAX_HP = exports.MELEE_ARC_DEGREES = exports.PROJECTILE_LIFETIME_MS = exports.MAX_LOOT_ON_MAP = exports.LOOT_RESPAWN_INTERVAL_SEC = exports.INITIAL_LOOT_COUNT = exports.MAX_PLAYERS = exports.MIN_PLAYERS_TO_START = exports.LOBBY_COUNTDOWN_SEC = exports.ZONE_DAMAGE_PER_SEC = exports.ZONE_INITIAL_RADIUS = exports.ZONE_PHASES = exports.PLAYER_PICKUP_RANGE = exports.PLAYER_MAX_HP = exports.PLAYER_RADIUS = exports.PLAYER_SPEED = exports.SERVER_PORT = exports.SERVER_TICK_MS = exports.SERVER_TICK_RATE = exports.ISLAND_RADIUS = exports.MAP_CENTER_Y = exports.MAP_CENTER_X = exports.MAP_HEIGHT = exports.MAP_WIDTH = void 0;
 // --- Map ---
-exports.MAP_WIDTH = 4000;
-exports.MAP_HEIGHT = 4000;
-exports.MAP_CENTER_X = exports.MAP_WIDTH / 2;
-exports.MAP_CENTER_Y = exports.MAP_HEIGHT / 2;
+export const MAP_WIDTH = 4000;
+export const MAP_HEIGHT = 4000;
+export const MAP_CENTER_X = MAP_WIDTH / 2;
+export const MAP_CENTER_Y = MAP_HEIGHT / 2;
 // Island is a circle inscribed in the map
-exports.ISLAND_RADIUS = 1800;
+export const ISLAND_RADIUS = 1800;
 // --- Server ---
-exports.SERVER_TICK_RATE = 20; // ticks per second
-exports.SERVER_TICK_MS = 1000 / exports.SERVER_TICK_RATE; // 50ms
-exports.SERVER_PORT = 2567;
+export const SERVER_TICK_RATE = 20; // ticks per second
+export const SERVER_TICK_MS = 1000 / SERVER_TICK_RATE; // 50ms
+export const SERVER_PORT = 2567;
+// Matchmaking
+export const TARGET_PLAYERS = 10;
+export const LOBBY_WAIT_TIME_SEC = 20;
 // --- Player ---
-exports.PLAYER_SPEED = 200; // units per second
-exports.PLAYER_RADIUS = 16;
-exports.PLAYER_MAX_HP = 100;
-exports.PLAYER_PICKUP_RANGE = 50;
+export const PLAYER_SPEED = 240; // units per second (slightly faster for fluidity)
+export const PLAYER_RADIUS = 16;
+export const PLAYER_MAX_HP = 100;
+export const PLAYER_PICKUP_RANGE = 50;
 // --- Zone shrink phases ---
 // Each phase: [delay before shrink starts (sec), shrink duration (sec), target radius]
-exports.ZONE_PHASES = [
-    { delay: 30, shrinkDuration: 30, targetRadius: 1400 }, // Phase 1: gentle
-    { delay: 20, shrinkDuration: 25, targetRadius: 900 }, // Phase 2
-    { delay: 15, shrinkDuration: 20, targetRadius: 500 }, // Phase 3
-    { delay: 10, shrinkDuration: 15, targetRadius: 200 }, // Phase 4
-    { delay: 8, shrinkDuration: 10, targetRadius: 50 }, // Phase 5: final
+export const ZONE_PHASES = [
+    { delay: 60, shrinkDuration: 60, targetRadius: 1400 }, // Phase 1: gentle
+    { delay: 45, shrinkDuration: 45, targetRadius: 900 }, // Phase 2
+    { delay: 30, shrinkDuration: 30, targetRadius: 500 }, // Phase 3
+    { delay: 20, shrinkDuration: 20, targetRadius: 200 }, // Phase 4
+    { delay: 10, shrinkDuration: 15, targetRadius: 50 }, // Phase 5: final
 ];
-exports.ZONE_INITIAL_RADIUS = exports.ISLAND_RADIUS;
-exports.ZONE_DAMAGE_PER_SEC = [5, 8, 12, 18, 25]; // damage per phase index
+export const ZONE_INITIAL_RADIUS = ISLAND_RADIUS;
+export const ZONE_DAMAGE_PER_SEC = [5, 8, 12, 18, 25]; // damage per phase index
 // --- Game phases ---
-exports.LOBBY_COUNTDOWN_SEC = 5;
-exports.MIN_PLAYERS_TO_START = 2;
-exports.MAX_PLAYERS = 50;
+export const LOBBY_COUNTDOWN_SEC = 5;
+export const MIN_PLAYERS_TO_START = 2;
+export const MAX_PLAYERS = 50;
 // --- Loot ---
-exports.INITIAL_LOOT_COUNT = 80;
-exports.LOOT_RESPAWN_INTERVAL_SEC = 15;
-exports.MAX_LOOT_ON_MAP = 120;
+export const INITIAL_LOOT_COUNT = 40;
+export const LOOT_RESPAWN_INTERVAL_SEC = 20;
+export const MAX_LOOT_ON_MAP = 60;
 // --- Combat ---
-exports.PROJECTILE_LIFETIME_MS = 2000;
-exports.MELEE_ARC_DEGREES = 90;
-exports.SHIELD_MAX_HP = 50;
-exports.COCONUT_HEAL_AMOUNT = 30;
-exports.COCONUT_USE_TIME_MS = 2000;
+export const PROJECTILE_LIFETIME_MS = 2000;
+export const MELEE_ARC_DEGREES = 90;
+export const SHIELD_MAX_HP = 50;
+export const COCONUT_HEAL_AMOUNT = 30;
+export const COCONUT_USE_TIME_MS = 2000;
 // --- Colors (hex) ---
-exports.COLORS = {
-    sand: 0xF4E4BA,
+export const COLORS = {
+    sand: 0xE2C792, // Darker sand for better contrast
     water: 0x5CC8D7,
     waterDeep: 0x3A9FB0,
-    palmLeaves: 0x6BBF59,
-    palmTrunk: 0xA0724A,
+    palmLeaves: 0x3A7A2D, // Deep tropical green
+    palmTrunk: 0x6B4423,
+    rock: 0x7D8285, // Gray for rocks
     accentCoral: 0xFF7043,
     accentYellow: 0xFFD54F,
+    projectile: 0x00E5FF, // Neon Cyan for projectiles
     uiBg: 0x141E28,
     uiText: 0xF5F5F5,
     danger: 0xEF5350,
@@ -63,7 +65,7 @@ exports.COLORS = {
     shield: 0x42A5F5,
 };
 // CSS string versions for HTML UI
-exports.CSS_COLORS = {
+export const CSS_COLORS = {
     sand: '#F4E4BA',
     water: '#5CC8D7',
     waterDeep: '#3A9FB0',

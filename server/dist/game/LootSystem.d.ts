@@ -6,6 +6,7 @@ export declare class LootSystem {
     update(dtSeconds: number): void;
     private spawnInitialLoot;
     private spawnLootBatch;
+    spawnLootAt(x: number, y: number, itemType: string): void;
     private getRandomItemType;
     handlePickup(sessionId: string): void;
     private applyItemEffect;

@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>CoconutClash</title>
-    <!-- Use Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="./assets/index-H7XGk7bk.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BpNe0ODG.css">
+    <title>CoconutClash — Tropical Battle Royale</title>
+    <meta name="description" content="CoconutClash: A fast-paced tropical .io Battle Royale. Loot weapons, hide in bushes, fight to be the last one standing!" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="./assets/index-rupChvf5.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DDDSZ1p1.css">
   </head>
   <body>
     <!-- Phaser canvas container -->
@@ -15,44 +15,114 @@
 
     <!-- UI Overlay container -->
     <div id="ui-container">
-      <!-- These sections will be toggled by the game scenes -->
       
-      <!-- Login / Menu -->
+      <!-- ==================== MENU ==================== -->
       <div id="menu-ui" class="ui-layer">
+        <div class="menu-bg-particles"></div>
         <div class="menu-box">
           <div class="logo">
-            <h1>CoconutClash</h1>
+            <img src="./logo.png" alt="CoconutClash Logo" class="main-logo" />
             <div class="subtitle">Tropical Battle Royale</div>
           </div>
-          <input type="text" id="nickname-input" placeholder="Enter your name" maxlength="15" autocomplete="off" />
-          <button id="play-button" class="btn primary">Play</button>
-          <div id="connection-status">Connecting to server...</div>
+          
+          <div class="menu-form">
+            <input type="text" id="nickname-input" placeholder="Your island name..." maxlength="15" autocomplete="off" />
+            <button id="play-button" class="btn primary">
+              <span class="btn-icon">🏝️</span> Deploy to Island
+            </button>
+          </div>
+          
+          <div class="how-to-play">
+            <h3>How to Survive</h3>
+            <div class="controls-grid">
+              <div class="control-item">
+                <div class="control-key">WASD</div>
+                <div class="control-desc">Move</div>
+              </div>
+              <div class="control-item">
+                <div class="control-key">🖱️</div>
+                <div class="control-desc">Aim & Shoot</div>
+              </div>
+              <div class="control-item">
+                <div class="control-key">🌿</div>
+                <div class="control-desc">Hide in Bushes</div>
+              </div>
+              <div class="control-item">
+                <div class="control-key">📦</div>
+                <div class="control-desc">Grab Airdrops</div>
+              </div>
+            </div>
+          </div>
+          
+          <div id="connection-status">
+            <span class="status-dot"></span> Connecting to server...
+          </div>
         </div>
       </div>
 
-      <!-- In-Game HUD -->
+      <!-- ==================== IN-GAME HUD ==================== -->
       <div id="hud-ui" class="ui-layer hidden">
-        <div class="top-bar">
-          <div class="survivors-count">
-            <span class="icon">🥥</span> <span id="alive-count">0</span>
+        
+        <!-- Top Bar -->
+        <div class="hud-top">
+          <div class="hud-survivors">
+            <span class="hud-icon">🥥</span>
+            <span id="alive-count">0</span>
+            <span class="hud-label">alive</span>
           </div>
-          <div class="zone-timer" id="zone-timer">
-            00:00
+          <div class="hud-zone-timer" id="zone-timer">
+            <span class="hud-icon">⏱️</span>
+            <span id="zone-time-text">00:00</span>
           </div>
         </div>
-        
+
+        <!-- Kill Feed (right side) -->
         <div class="kill-feed" id="kill-feed"></div>
+
+        <!-- Minimap (top right) -->
+        <div class="hud-minimap" id="hud-minimap">
+          <canvas id="minimap-canvas" width="160" height="160"></canvas>
+        </div>
+
+        <!-- Bottom Bar: Health + Weapon -->
+        <div class="hud-bottom">
+          <div class="hud-health-bar">
+            <div class="hud-health-fill" id="hud-health-fill"></div>
+            <div class="hud-shield-fill" id="hud-shield-fill"></div>
+            <span class="hud-health-text" id="hud-health-text">100</span>
+          </div>
+          <div class="hud-weapon" id="hud-weapon">
+            <span class="weapon-icon" id="weapon-icon">👊</span>
+            <span class="weapon-name" id="weapon-name">Fists</span>
+          </div>
+        </div>
+
+        <!-- Lobby Overlay -->
+        <div id="lobby-overlay" class="lobby-overlay">
+          <div class="lobby-icon">⏳</div>
+          <h2 id="lobby-text">Waiting for players...</h2>
+        </div>
       </div>
 
-      <!-- Game Over -->
+      <!-- ==================== GAME OVER ==================== -->
       <div id="gameover-ui" class="ui-layer hidden">
-        <div class="menu-box">
-          <h2 id="gameover-title">Game Over</h2>
-          <div class="stats">
-            <p>Placement: <span id="go-placement">#1</span></p>
-            <p>Kills: <span id="go-kills">0</span></p>
+        <div class="gameover-box">
+          <div class="gameover-badge" id="gameover-badge">💀</div>
+          <h2 id="gameover-title">ELIMINATED</h2>
+          <div class="gameover-stats">
+            <div class="stat-item">
+              <div class="stat-value" id="go-placement">#1</div>
+              <div class="stat-label">Placement</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-value" id="go-kills">0</div>
+              <div class="stat-label">Kills</div>
+            </div>
           </div>
-          <button id="replay-button" class="btn primary">Play Again</button>
+          <button id="replay-button" class="btn primary">
+            <span class="btn-icon">🔄</span> Play Again
+          </button>
         </div>
       </div>
     </div>

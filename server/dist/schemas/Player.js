@@ -24,6 +24,8 @@ export class Player extends Schema {
         this.kills = 0;
         this.inputX = 0;
         this.inputY = 0;
+        this.isBot = false;
+        this.inBush = false;
         // To handle client-side reconciliation
         this.lastProcessedSeq = 0;
     }
@@ -76,6 +78,14 @@ __decorate([
     type("number"),
     __metadata("design:type", Number)
 ], Player.prototype, "inputY", void 0);
+__decorate([
+    type("boolean"),
+    __metadata("design:type", Boolean)
+], Player.prototype, "isBot", void 0);
+__decorate([
+    type("boolean"),
+    __metadata("design:type", Boolean)
+], Player.prototype, "inBush", void 0);
 __decorate([
     type("int32"),
     __metadata("design:type", Number)

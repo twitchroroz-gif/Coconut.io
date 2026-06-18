@@ -11,9 +11,25 @@ export class CombatSystem {
         // 1. Move Projectiles
         for (let i = this.state.projectiles.length - 1; i >= 0; i--) {
             const proj = this.state.projectiles[i];
-            // Move
+            // Move projectile
             proj.x += Math.cos(proj.angle) * proj.speed * dtSeconds;
             proj.y += Math.sin(proj.angle) * proj.speed * dtSeconds;
+            // Check collision with obstacles
+            let hitObstacle = false;
+            for (let j = 0; j < this.state.obstacles.length; j++) {
+                const obs = this.state.obstacles[j];
+                if (!obs)
+                    continue;
+                const distSq = Math.pow(proj.x - obs.x, 2) + Math.pow(proj.y - obs.y, 2);
+                if (distSq < obs.radius * obs.radius) {
+                    hitObstacle = true;
+                    break;
+                }
+            }
+            if (hitObstacle) {
+                this.state.projectiles.splice(i, 1);
+                continue;
+            }
             // Check lifetime
             if (now - proj.createdAt > PROJECTILE_LIFETIME_MS) {
                 this.state.projectiles.splice(i, 1);

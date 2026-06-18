@@ -11,6 +11,9 @@ import { Schema, type, MapSchema, ArraySchema } from "@colyseus/schema";
 import { Player } from "./Player";
 import { LootItem } from "./LootItem";
 import { Projectile } from "./Projectile";
+import { Bush } from "./Bush";
+import { Airdrop } from "./Airdrop";
+import { Obstacle } from "./Obstacle";
 import { GamePhase, MAP_CENTER_X, MAP_CENTER_Y, ZONE_INITIAL_RADIUS } from "coconutclash-shared";
 export class GameState extends Schema {
     constructor() {
@@ -18,6 +21,9 @@ export class GameState extends Schema {
         this.players = new MapSchema();
         this.lootItems = new ArraySchema();
         this.projectiles = new ArraySchema();
+        this.bushes = new ArraySchema();
+        this.airdrops = new ArraySchema();
+        this.obstacles = new ArraySchema();
         this.zoneRadius = ZONE_INITIAL_RADIUS;
         this.zoneCenterX = MAP_CENTER_X;
         this.zoneCenterY = MAP_CENTER_Y;
@@ -41,6 +47,18 @@ __decorate([
     type([Projectile]),
     __metadata("design:type", Object)
 ], GameState.prototype, "projectiles", void 0);
+__decorate([
+    type([Bush]),
+    __metadata("design:type", Object)
+], GameState.prototype, "bushes", void 0);
+__decorate([
+    type([Airdrop]),
+    __metadata("design:type", Object)
+], GameState.prototype, "airdrops", void 0);
+__decorate([
+    type([Obstacle]),
+    __metadata("design:type", Object)
+], GameState.prototype, "obstacles", void 0);
 __decorate([
     type("float32"),
     __metadata("design:type", Number)

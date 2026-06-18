@@ -34,6 +34,16 @@ export class LootSystem {
             this.state.lootItems.push(item);
         }
     }
+    spawnLootAt(x, y, itemType) {
+        if (this.state.lootItems.length >= MAX_LOOT_ON_MAP)
+            return;
+        const item = new LootItem();
+        item.id = randomUUID();
+        item.x = x;
+        item.y = y;
+        item.itemType = itemType;
+        this.state.lootItems.push(item);
+    }
     getRandomItemType() {
         const totalWeight = Object.values(LOOT_WEIGHTS).reduce((a, b) => a + b, 0);
         let random = Math.random() * totalWeight;

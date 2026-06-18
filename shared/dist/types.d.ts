@@ -2,7 +2,7 @@ export declare enum GamePhase {
     WAITING = 0,// Waiting for players in lobby
     COUNTDOWN = 1,// Enough players, counting down to start
     PLAYING = 2,// Game in progress
-    ENDED = 3
+    GAME_OVER = 3
 }
 export declare enum WeaponType {
     NONE = "none",
