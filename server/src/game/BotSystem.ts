@@ -62,7 +62,7 @@ export class BotSystem {
     }
 
     // 2. Find enemies
-    let closestEnemy: Player | null = null;
+    let closestEnemy: any = null;
     let closestEnemyDist: number = 999999;
 
     this.state.players.forEach((otherPlayer, otherId) => {
