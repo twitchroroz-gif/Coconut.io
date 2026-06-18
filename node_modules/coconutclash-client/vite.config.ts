@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import path from 'path';
 
 export default defineConfig({
   base: './', // Use relative paths for assets in production
@@ -9,5 +10,10 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     emptyOutDir: true,
+  },
+  resolve: {
+    alias: {
+      'coconutclash-shared': path.resolve(__dirname, '../shared/src/index.ts'),
+    },
   },
 });
