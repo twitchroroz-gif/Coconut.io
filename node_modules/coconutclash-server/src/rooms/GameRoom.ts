@@ -183,6 +183,7 @@ export class GameRoom extends Room<GameState> {
           let hitObs = false;
           for (let i = 0; i < this.state.obstacles.length; i++) {
             const obs = this.state.obstacles[i];
+            if (!obs) continue;
             const distSq = Math.pow(nextX - obs.x, 2) + Math.pow(nextY - obs.y, 2);
             // Player radius is roughly 16. We use obs.radius + 16 for collision
             if (distSq < Math.pow(obs.radius + 16, 2)) {
@@ -211,6 +212,7 @@ export class GameRoom extends Room<GameState> {
         let hiding = false;
         for (let i = 0; i < this.state.bushes.length; i++) {
           const bush = this.state.bushes[i];
+          if (!bush) continue;
           const distSq = Math.pow(player.x - bush.x, 2) + Math.pow(player.y - bush.y, 2);
           if (distSq < bush.radius * bush.radius) {
             hiding = true;

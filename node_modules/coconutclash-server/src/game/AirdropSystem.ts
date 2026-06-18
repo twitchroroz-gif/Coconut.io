@@ -29,6 +29,7 @@ export class AirdropSystem {
     const now = Date.now();
     for (let i = this.state.airdrops.length - 1; i >= 0; i--) {
       const airdrop = this.state.airdrops[i];
+      if (!airdrop) continue;
       if (!airdrop.isLanded && now >= airdrop.landedAt) {
         airdrop.isLanded = true;
         this.openAirdrop(airdrop);

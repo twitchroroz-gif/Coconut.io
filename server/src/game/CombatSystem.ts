@@ -31,6 +31,7 @@ export class CombatSystem {
       let hitObstacle = false;
       for (let j = 0; j < this.state.obstacles.length; j++) {
         const obs = this.state.obstacles[j];
+        if (!obs) continue;
         const distSq = Math.pow(proj.x - obs.x, 2) + Math.pow(proj.y - obs.y, 2);
         if (distSq < obs.radius * obs.radius) {
           hitObstacle = true;

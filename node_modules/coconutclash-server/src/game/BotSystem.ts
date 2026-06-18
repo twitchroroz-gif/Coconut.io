@@ -63,7 +63,7 @@ export class BotSystem {
 
     // 2. Find enemies
     let closestEnemy: Player | null = null;
-    let closestEnemyDist = 999999;
+    let closestEnemyDist: number = 999999;
 
     this.state.players.forEach((otherPlayer, otherId) => {
       if (otherId !== sessionId && otherPlayer.alive && !otherPlayer.inBush) {
@@ -77,7 +77,7 @@ export class BotSystem {
 
     // 3. Find loot if unarmed
     let closestLoot: any = null;
-    let closestLootDist = 999999;
+    let closestLootDist: number = 999999;
     if (bot.weaponType === WeaponType.NONE) {
       this.state.lootItems.forEach(loot => {
         const dist = Math.sqrt(Math.pow(bot.x - loot.x, 2) + Math.pow(bot.y - loot.y, 2));
