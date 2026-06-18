@@ -1,0 +1,1 @@
+{"version":3,"file":"LootItem.d.ts","sourceRoot":"","sources":["../../src/schemas/LootItem.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAQ,MAAM,kBAAkB,CAAC;AAEhD,qBAAa,QAAS,SAAQ,MAAM;IAClB,EAAE,EAAE,MAAM,CAAM;IACf,CAAC,EAAE,MAAM,CAAK;IACd,CAAC,EAAE,MAAM,CAAK;IACf,QAAQ,EAAE,MAAM,CAAM;CACvC"}

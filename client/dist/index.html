@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>CoconutClash</title>
+    <!-- Use Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="./assets/index-H7XGk7bk.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BpNe0ODG.css">
+  </head>
+  <body>
+    <!-- Phaser canvas container -->
+    <div id="game-container"></div>
+
+    <!-- UI Overlay container -->
+    <div id="ui-container">
+      <!-- These sections will be toggled by the game scenes -->
+      
+      <!-- Login / Menu -->
+      <div id="menu-ui" class="ui-layer">
+        <div class="menu-box">
+          <div class="logo">
+            <h1>CoconutClash</h1>
+            <div class="subtitle">Tropical Battle Royale</div>
+          </div>
+          <input type="text" id="nickname-input" placeholder="Enter your name" maxlength="15" autocomplete="off" />
+          <button id="play-button" class="btn primary">Play</button>
+          <div id="connection-status">Connecting to server...</div>
+        </div>
+      </div>
+
+      <!-- In-Game HUD -->
+      <div id="hud-ui" class="ui-layer hidden">
+        <div class="top-bar">
+          <div class="survivors-count">
+            <span class="icon">🥥</span> <span id="alive-count">0</span>
+          </div>
+          <div class="zone-timer" id="zone-timer">
+            00:00
+          </div>
+        </div>
+        
+        <div class="kill-feed" id="kill-feed"></div>
+      </div>
+
+      <!-- Game Over -->
+      <div id="gameover-ui" class="ui-layer hidden">
+        <div class="menu-box">
+          <h2 id="gameover-title">Game Over</h2>
+          <div class="stats">
+            <p>Placement: <span id="go-placement">#1</span></p>
+            <p>Kills: <span id="go-kills">0</span></p>
+          </div>
+          <button id="replay-button" class="btn primary">Play Again</button>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

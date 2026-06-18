@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>CoconutClash — Tropical Battle Royale</title>
+    <meta name="description" content="CoconutClash: A fast-paced tropical .io Battle Royale. Loot weapons, hide in bushes, fight to be the last one standing!" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <!-- Phaser canvas container -->
+    <div id="game-container"></div>
+
+    <!-- UI Overlay container -->
+    <div id="ui-container">
+      
+      <!-- ==================== MENU ==================== -->
+      <div id="menu-ui" class="ui-layer">
+        <div class="menu-bg-particles"></div>
+        <div class="menu-box">
+          <div class="logo">
+            <div class="logo-icon">🥥</div>
+            <h1>Coconut<span class="logo-clash">Clash</span></h1>
+            <div class="subtitle">Tropical Battle Royale</div>
+          </div>
+          
+          <div class="menu-form">
+            <input type="text" id="nickname-input" placeholder="Your island name..." maxlength="15" autocomplete="off" />
+            <button id="play-button" class="btn primary">
+              <span class="btn-icon">🏝️</span> Deploy to Island
+            </button>
+          </div>
+          
+          <div class="how-to-play">
+            <h3>How to Survive</h3>
+            <div class="controls-grid">
+              <div class="control-item">
+                <div class="control-key">WASD</div>
+                <div class="control-desc">Move</div>
+              </div>
+              <div class="control-item">
+                <div class="control-key">🖱️</div>
+                <div class="control-desc">Aim & Shoot</div>
+              </div>
+              <div class="control-item">
+                <div class="control-key">🌿</div>
+                <div class="control-desc">Hide in Bushes</div>
+              </div>
+              <div class="control-item">
+                <div class="control-key">📦</div>
+                <div class="control-desc">Grab Airdrops</div>
+              </div>
+            </div>
+          </div>
+          
+          <div id="connection-status">
+            <span class="status-dot"></span> Connecting to server...
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== IN-GAME HUD ==================== -->
+      <div id="hud-ui" class="ui-layer hidden">
+        
+        <!-- Top Bar -->
+        <div class="hud-top">
+          <div class="hud-survivors">
+            <span class="hud-icon">🥥</span>
+            <span id="alive-count">0</span>
+            <span class="hud-label">alive</span>
+          </div>
+          <div class="hud-zone-timer" id="zone-timer">
+            <span class="hud-icon">⏱️</span>
+            <span id="zone-time-text">00:00</span>
+          </div>
+        </div>
+
+        <!-- Kill Feed (right side) -->
+        <div class="kill-feed" id="kill-feed"></div>
+
+        <!-- Minimap (top right) -->
+        <div class="hud-minimap" id="hud-minimap">
+          <canvas id="minimap-canvas" width="160" height="160"></canvas>
+        </div>
+
+        <!-- Bottom Bar: Health + Weapon -->
+        <div class="hud-bottom">
+          <div class="hud-health-bar">
+            <div class="hud-health-fill" id="hud-health-fill"></div>
+            <div class="hud-shield-fill" id="hud-shield-fill"></div>
+            <span class="hud-health-text" id="hud-health-text">100</span>
+          </div>
+          <div class="hud-weapon" id="hud-weapon">
+            <span class="weapon-icon" id="weapon-icon">👊</span>
+            <span class="weapon-name" id="weapon-name">Fists</span>
+          </div>
+        </div>
+
+        <!-- Lobby Overlay -->
+        <div id="lobby-overlay" class="lobby-overlay">
+          <div class="lobby-icon">⏳</div>
+          <h2 id="lobby-text">Waiting for players...</h2>
+        </div>
+      </div>
+
+      <!-- ==================== GAME OVER ==================== -->
+      <div id="gameover-ui" class="ui-layer hidden">
+        <div class="gameover-box">
+          <div class="gameover-badge" id="gameover-badge">💀</div>
+          <h2 id="gameover-title">ELIMINATED</h2>
+          <div class="gameover-stats">
+            <div class="stat-item">
+              <div class="stat-value" id="go-placement">#1</div>
+              <div class="stat-label">Placement</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-value" id="go-kills">0</div>
+              <div class="stat-label">Kills</div>
+            </div>
+          </div>
+          <button id="replay-button" class="btn primary">
+            <span class="btn-icon">🔄</span> Play Again
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>
